@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fly.springboot.demo.mapper.UserDao">
+    <resultMap id="userRM" type="User" autoMapping="true">
+        <id column="id" property="id"></id>
+        <result column="username" property="username" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+    <sql id="columns" >
+        id, username,age
+    </sql>
+
+    <select id="findAll" resultType="User">
+        SELECT <include refid="columns"/> FROM users
+    </select>
+
+    <select id="findOne" resultMap="userRM">
+        SELECT <include refid="columns"/> FROM users WHERE id=#{id}
+    </select>
+
+    <insert id="insert" parameterType="User">
+        INSERT INTO users(id,username,age) VALUES(null,#{username}, #{age})
+    </insert>
+
+    <update id="update" parameterType="User">
+        UPDATE users
+        <set>
+            <if test="username!=null">username=#{username},</if>
+            <if test="age!=null">age=#{age},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+</mapper>

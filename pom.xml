@@ -13,6 +13,8 @@
       <module>springboot-cache-redis</module>
       <module>springboot-scheduled</module>
       <module>springboot-mail</module>
+    <module>springboot-database-mybatis</module>
+    <module>springboot-database-jpa</module>
   </modules>
   <packaging>pom</packaging>
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>hello</title>
+    <link th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+thymeleaf的一些常用示例
+文本：
+<h1 th:text="${greeting}">Hello World</h1>
+<br/>
+
+URL:
+<a th:href="@{https://www.baidu.com/}">Thymeleaf</a>
+
+条件求值：
+<!--<a th:href="@{/login}" th:unless=${session.user != null}>Login</a>-->
+<h2 th:unless=${login!=null}>Login</h2>
+
+for循环
+<table class="table">
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}">admin</td>
+        <td th:text="${user.age}">18</td>
+        <td th:text="${user.address}">hz</td>
+    </tr>
+</table>
+</body>
+</html>
